@@ -1,5 +1,29 @@
 .App {
-  text-align: center;
+  padding: 2rem;
+  font-size: 1.5rem;
+  .header {
+    background-color: darkseagreen;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+  .main-content {
+    display: flex;
+    justify-content: space-around;
+    > :nth-child(1) {
+      background-color: #d0d0d0;
+      width: 30%;
+      padding: 1rem;
+      > div {
+        margin: 10px 0;
+      }
+    }
+    > :nth-child(2) {
+      background-color: antiquewhite;
+      width: 70%;
+      padding: 1rem;
+    }
+  }
 }
 
 .App-logo {

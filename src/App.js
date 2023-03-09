@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.scss";
+import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import SideNav from "./components/Sidenav";
+import MoviesList from "./components/Movies";
 
-function App() {
+// Inline styling - add styling to the element itself
+// External styles - importing some classes from a file, and targetting the elements by class
+
+const NavItems = ["Movies", "Wishlist", "Genres", "New Movie"];
+
+const App = () => {
+  const title = "React on Movies!";
+
+  const [selectedSection, setSelectedSection] = useState("Movies");
+
+  const updateNavItem = (value) => {
+    setSelectedSection(value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header title={title} currentPage={selectedSection} />
+      <div className="main-content">
+        <SideNav items={NavItems} update={updateNavItem} />
+        <MoviesList />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
