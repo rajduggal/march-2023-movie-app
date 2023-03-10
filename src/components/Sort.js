@@ -1,9 +1,16 @@
 const sortingItems = ["Title", "Release Date", "Rating"];
 
+const selectStyle = {
+  width: "40%",
+  height: "2rem",
+  fontSize: "1rem",
+  fontWeight: "bold",
+};
+
 const Sort = ({ updateOrder }) => {
   return (
     <div>
-      <select onChange={updateOrder}>
+      <select style={selectStyle} onChange={updateOrder}>
         {sortingItems.map((option) => {
           return <option>{option}</option>;
         })}
