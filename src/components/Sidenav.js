@@ -4,6 +4,7 @@ const SideNav = ({ items, update }) => {
       {items.map((navItem) => {
         return (
           <div
+            key={navItem}
             onClick={() => {
               update(navItem);
             }}

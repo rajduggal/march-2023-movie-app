@@ -12,7 +12,7 @@ const Sort = ({ updateOrder }) => {
     <div>
       <select style={selectStyle} onChange={updateOrder}>
         {sortingItems.map((option) => {
-          return <option>{option}</option>;
+          return <option key={option}>{option}</option>;
         })}
       </select>
     </div>

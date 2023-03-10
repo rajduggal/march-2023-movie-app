@@ -12,7 +12,7 @@ const MovieTile = ({ movie, styles }) => {
         Actors:{" "}
         <ul>
           {movie.Actors.split(", ").map((actor) => {
-            return <li>{actor}</li>;
+            return <li key={actor}>{actor}</li>;
           })}
         </ul>
       </div>

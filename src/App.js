@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import SideNav from "./components/Sidenav";
 import MoviesList from "./components/Movies";
 import Sort from "./components/Sort";
+import Wishlist from "./components/Wishlist";
 
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
@@ -32,7 +33,8 @@ const App = () => {
         <SideNav items={NavItems} update={updateNavItem} />
         <div>
           <Sort updateOrder={sortItems} />
-          <MoviesList />
+          {selectedSection === "Movies" && <MoviesList />}
+          {selectedSection === "Wishlist" && <Wishlist />}
         </div>
       </div>
     </div>

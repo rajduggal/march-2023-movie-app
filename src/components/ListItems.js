@@ -4,7 +4,7 @@ const ListItems = ({ data }) => {
   return (
     <div>
       {data.split(", ").map((element) => {
-        return <Label textValue={element} />;
+        return <Label key={element} textValue={element} />;
       })}
     </div>
   );

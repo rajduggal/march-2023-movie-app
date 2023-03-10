@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import MovieTile from "./MovieTile";
 
 const movies = require("../data/movies.json");
@@ -9,10 +10,15 @@ const movieStyle = {
 };
 
 const MoviesList = () => {
+  useEffect(() => {
+    console.log("movies loaded");
+  }, []);
   return (
     <div>
       {movies.map((movie) => {
-        return <MovieTile movie={movie} styles={movieStyle} />;
+        return (
+          <MovieTile key={movie.imdbID} movie={movie} styles={movieStyle} />
+        );
       })}
     </div>
   );
