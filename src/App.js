@@ -9,15 +9,20 @@ import Wishlist from "./components/Wishlist";
 import HooksRef from "./components/hooks/Hooks";
 import ClassCounter from "./components/hooks/ClassCounter";
 import HookCounter from "./components/hooks/HookCounter";
-// import ClassCounterTwo from "./components/hooks/ClassCounterTwo";
-// import HookCounterTwo from "./components/hooks/HookCounterTwo";
-// import HookCounterThree from "./components/hooks/HookCounterThree";
-// import HookCounterFour from "./components/hooks/HookCounterFour";
-
+import ClassCounterTwo from "./components/hooks/ClassCounterTwo";
+import HookCounterTwo from "./components/hooks/HookCounterTwo";
+import HookCounterThree from "./components/hooks/HookCounterThree";
+import HookCounterFour from "./components/hooks/HookCounterFour";
+//importing useEffect comp
+import ClassCounterOne from "./components/hooks/useEffect-hook/ClassCounterOne";
+import HookCounterOne from "./components/hooks/useEffect-hook/HookCounterOne";
+// import ClassMouse from "./components/hooks/useEffect-hook/ClassMouse";
+// import HookMouse from "./components/hooks/useEffect-hook/HookMouse";
+// import MouseContainer from "./components/hooks/useEffect-hook/MouseContainer";
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
 
-const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "Hooks"];
+const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hooks", "UseEffect Hooks"];
 
 const App = () => {
   const title = "React on Movies!";
@@ -42,15 +47,20 @@ const App = () => {
           <Sort updateOrder={sortItems} />
           {selectedSection === "Movies" && <MoviesList />}
           {selectedSection === "Wishlist" && <Wishlist />}
-          {selectedSection === "Hooks" && <ClassCounter />}
-          {selectedSection === "Hooks" && <HookCounter />}
-          {selectedSection === "Hooks" && <HooksRef />}
-{/*           
-          {selectedSection === "Hooks" && <HooksRef />}
-          {selectedSection === "Hooks" && <ClassCounterTwo />}
-          {selectedSection === "Hooks" && <HookCounterTwo />}
-          {selectedSection === "Hooks" && <HookCounterThree />}
-          {selectedSection === "Hooks" && <HookCounterFour />} */}
+          {selectedSection === "UseState Hooks" && <ClassCounter />}
+          {selectedSection === "UseState Hooks" && <HookCounter />}
+          {selectedSection === "UseState Hooks" && <HooksRef />}
+          {selectedSection === "UseState Hooks" && <ClassCounterTwo />}
+          {selectedSection === "UseState Hooks" && <HookCounterTwo />}
+          {selectedSection === "UseState Hooks" && <HookCounterThree />}
+          {selectedSection === "UseState Hooks" && <HookCounterFour />}
+          {selectedSection === "UseEffect Hooks" && <ClassCounterOne />}
+          {selectedSection === "UseEffect Hooks" && <HookCounterOne />}
+          {/* {selectedSection === "UseEffect Hooks" && <ClassMouse />} */}
+          {/* {selectedSection === "UseEffect Hooks" && <HookMouse />} */} 
+          {/* // need to show unmount so include this under MouseContainer comp */}
+          {/* {selectedSection === "UseEffect Hooks" && <MouseContainer />} */}
+          
         </div>
       </div>
     </div>
