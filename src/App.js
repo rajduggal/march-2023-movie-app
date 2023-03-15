@@ -16,9 +16,11 @@ import HookCounterFour from "./components/hooks/HookCounterFour";
 //importing useEffect comp
 import ClassCounterOne from "./components/hooks/useEffect-hook/ClassCounterOne";
 import HookCounterOne from "./components/hooks/useEffect-hook/HookCounterOne";
-// import ClassMouse from "./components/hooks/useEffect-hook/ClassMouse";
-// import HookMouse from "./components/hooks/useEffect-hook/HookMouse";
-// import MouseContainer from "./components/hooks/useEffect-hook/MouseContainer";
+import ClassMouse from "./components/hooks/useEffect-hook/ClassMouse";
+import HookMouse from "./components/hooks/useEffect-hook/HookMouse";
+import MouseContainer from "./components/hooks/useEffect-hook/MouseContainer";
+import IntervalClassCounter from "./components/hooks/useEffect-hook/IntervalClassCounter";
+import IntervalHookCounter from "./components/hooks/useEffect-hook/IntervalHookCounter";
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
 
@@ -57,9 +59,11 @@ const App = () => {
           {selectedSection === "UseEffect Hooks" && <ClassCounterOne />}
           {selectedSection === "UseEffect Hooks" && <HookCounterOne />}
           {/* {selectedSection === "UseEffect Hooks" && <ClassMouse />} */}
-          {/* {selectedSection === "UseEffect Hooks" && <HookMouse />} */} 
+          {/* {selectedSection === "UseEffect Hooks" && <HookMouse />}  */}
           {/* // need to show unmount so include this under MouseContainer comp */}
-          {/* {selectedSection === "UseEffect Hooks" && <MouseContainer />} */}
+          {selectedSection === "UseEffect Hooks" && <MouseContainer />}
+          {/* {selectedSection === "UseEffect Hooks" && <IntervalClassCounter />} */}
+          {selectedSection === "UseEffect Hooks" && <IntervalHookCounter />}
           
         </div>
       </div>
