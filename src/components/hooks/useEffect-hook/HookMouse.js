@@ -9,7 +9,7 @@ function HookMouse() {
 		setX(e.clientX)
 		setY(e.clientY)
 	}
-
+	
 	useEffect(() => {
 		console.log('useFffect called')
     	window.addEventListener('mousemove', logMousePosition)
@@ -19,6 +19,7 @@ function HookMouse() {
       window.removeEventListener('mousemove', logMousePosition) // this part we need to use to unmount otherwise it will show error after click on toggle button
     }
 	},[]) //remv array bracket to chk multiple render, here we don't hv any dependency so we cn pass empty array there is no reason to call rerender
+	
 	return (
 		<>
 		<div>

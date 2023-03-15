@@ -1,37 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios from 'axios' //npm i axios
 
 function DataFetching() {
-	const [post, setPost] = useState({})
-	const [id, setId] = useState(1)
-	const [idFromButtonClick, setIdFromButtonClick] = useState(1)
+	const [posts, setPost] = useState([])//1
 
-	useEffect(() => {
+	useEffect(() => {//1
 		axios
-			.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+			.get('https://jsonplaceholder.typicode.com/posts') //get request return promise.
 			.then(res => {
         console.log(res)
-        setPost(res.data)
+		setPost(res.data);
 			})
 			.catch(err => {
 				console.log(err)
 			})
-	}, [idFromButtonClick])
-
-	const handleClick = () => {
-		setIdFromButtonClick(id)
-	}
+	}, [])//if we will not add dependecy data will load infite time, if we dont hv dependecy so pass blank array
 
 	return (
 		<div>
-			<input type="text" value={id} onChange={e => setId(e.target.value)} />
-			<button type="button" onClick={handleClick}>Fetch Post</button>
-			<div>{post.title}</div>
-			{/* <ul>
+			<hr/><h3>Data Fetching via third party with useEffect</h3>
+		
+			<ul> 
 				{posts.map(post => (
-          <li key={post.id}>{post.title}</li>
+         		 <li key={post.id}>{post.title}</li>
 				))}
-			</ul> */}
+		
+			</ul>
 		</div>
 	)
 }

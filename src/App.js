@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SideNav from "./components/Sidenav";
 import MoviesList from "./components/Movies";
@@ -21,10 +21,17 @@ import HookMouse from "./components/hooks/useEffect-hook/HookMouse";
 import MouseContainer from "./components/hooks/useEffect-hook/MouseContainer";
 import IntervalClassCounter from "./components/hooks/useEffect-hook/IntervalClassCounter";
 import IntervalHookCounter from "./components/hooks/useEffect-hook/IntervalHookCounter";
+import DataFetching from "./components/hooks/useEffect-hook/DataFetching";
+import DataFetchingID from "./components/hooks/useEffect-hook/DataFetchingID";
+import ComponentC from "./components/hooks/useContext-hook/ComponentC";
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
 
-const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hooks", "UseEffect Hooks"];
+const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hook", "UseEffect Hook", "Context API and Hook"];
+
+//Create context api we can use under calss or functional component both 
+export const UserContext = React.createContext();//with the help of export we cn use this in any comp
+export const ChannelContext = React.createContext();
 
 const App = () => {
   const title = "React on Movies!";
@@ -49,22 +56,28 @@ const App = () => {
           <Sort updateOrder={sortItems} />
           {selectedSection === "Movies" && <MoviesList />}
           {selectedSection === "Wishlist" && <Wishlist />}
-          {selectedSection === "UseState Hooks" && <ClassCounter />}
-          {selectedSection === "UseState Hooks" && <HookCounter />}
-          {selectedSection === "UseState Hooks" && <HooksRef />}
-          {selectedSection === "UseState Hooks" && <ClassCounterTwo />}
-          {selectedSection === "UseState Hooks" && <HookCounterTwo />}
-          {selectedSection === "UseState Hooks" && <HookCounterThree />}
-          {selectedSection === "UseState Hooks" && <HookCounterFour />}
-          {selectedSection === "UseEffect Hooks" && <ClassCounterOne />}
-          {selectedSection === "UseEffect Hooks" && <HookCounterOne />}
-          {/* {selectedSection === "UseEffect Hooks" && <ClassMouse />} */}
-          {/* {selectedSection === "UseEffect Hooks" && <HookMouse />}  */}
+          {selectedSection === "UseState Hook" && <ClassCounter />}
+          {selectedSection === "UseState Hook" && <HookCounter />}
+          {selectedSection === "UseState Hook" && <HooksRef />}
+          {selectedSection === "UseState Hook" && <ClassCounterTwo />}
+          {selectedSection === "UseState Hook" && <HookCounterTwo />}
+          {selectedSection === "UseState Hook" && <HookCounterThree />}
+          {selectedSection === "UseState Hook" && <HookCounterFour />}
+          {selectedSection === "UseEffect Hook" && <ClassCounterOne />}
+          {selectedSection === "UseEffect Hook" && <HookCounterOne />}
+          {/* {selectedSection === "UseEffect Hook" && <ClassMouse />} */}
+          {/* {selectedSection === "UseEffect Hook" && <HookMouse />}  */}
           {/* // need to show unmount so include this under MouseContainer comp */}
-          {selectedSection === "UseEffect Hooks" && <MouseContainer />}
-          {/* {selectedSection === "UseEffect Hooks" && <IntervalClassCounter />} */}
-          {selectedSection === "UseEffect Hooks" && <IntervalHookCounter />}
-          
+          {selectedSection === "UseEffect Hook" && <MouseContainer />}
+          {selectedSection === "UseEffect Hook" && <IntervalClassCounter />}
+          {selectedSection === "UseEffect Hook" && <IntervalHookCounter />}
+          {selectedSection === "UseEffect Hook" && <DataFetching />}
+          {selectedSection === "UseEffect Hook" && <DataFetchingID />}
+          <UserContext.Provider value = {'Geet Thawani'}>
+            <ChannelContext.Provider value = {"Netflix"}>
+              {selectedSection === "Context API and Hook" && <ComponentC />}
+            </ChannelContext.Provider>
+          </UserContext.Provider>
         </div>
       </div>
     </div>
