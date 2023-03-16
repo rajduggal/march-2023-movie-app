@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import "./App.scss";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SideNav from "./components/Sidenav";
@@ -31,12 +32,13 @@ const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hook", 
 
 //Create context api we can use under calss or functional component both 
 export const UserContext = React.createContext();//with the help of export we cn use this in any comp
-export const ChannelContext = React.createContext();
+export const AllUserData = React.createContext();
 
 const App = () => {
   const title = "React on Movies!";
 
   const [selectedSection, setSelectedSection] = useState("Movies");
+  const [userData, setUserData] = useState([])//1
 
   const updateNavItem = (value) => {
     setSelectedSection(value);
@@ -46,6 +48,18 @@ const App = () => {
     console.log("Order by", order);
     //return; //data
   };
+
+	useEffect(() => {//1
+		axios
+			.get('https://jsonplaceholder.typicode.com/posts') //get request return promise.
+			.then(res => {
+        console.log(res)
+        setUserData(res.data);
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	},[])
 
   return (
     <div className="App">
@@ -73,10 +87,11 @@ const App = () => {
           {selectedSection === "UseEffect Hook" && <IntervalHookCounter />}
           {selectedSection === "UseEffect Hook" && <DataFetching />}
           {selectedSection === "UseEffect Hook" && <DataFetchingID />}
-          <UserContext.Provider value = {'Geet Thawani'}>
-            <ChannelContext.Provider value = {"Netflix"}>
+          <UserContext.Provider value = {'Geet Thawani'} >
+            {/* {selectedSection === "Context API and Hook" && <ComponentC />} */}
+            <AllUserData.Provider value = {userData}>
               {selectedSection === "Context API and Hook" && <ComponentC />}
-            </ChannelContext.Provider>
+            </AllUserData.Provider>
           </UserContext.Provider>
         </div>
       </div>

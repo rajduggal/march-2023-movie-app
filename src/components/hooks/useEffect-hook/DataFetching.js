@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios' //npm i axios
 
 function DataFetching() {
-	const [posts, setPost] = useState([])//1
+	const [posts, setPosts] = useState([])//1
 
 	useEffect(() => {//1
 		axios
 			.get('https://jsonplaceholder.typicode.com/posts') //get request return promise.
 			.then(res => {
         console.log(res)
-		setPost(res.data);
+		setPosts(res.data);
 			})
 			.catch(err => {
 				console.log(err)
 			})
-	}, [])//if we will not add dependecy data will load infite time, if we dont hv dependecy so pass blank array
+	},[])//if we will not add dependecy data will load infite time, if we dont hv dependecy so pass blank array
 
 	return (
 		<div>
@@ -22,7 +22,10 @@ function DataFetching() {
 		
 			<ul> 
 				{posts.map(post => (
-         		 <li key={post.id}>{post.title}</li>
+         		 <li key={post.id}>
+					<h4>{post.title}</h4>
+					<p>{post.body}</p>
+				</li>
 				))}
 		
 			</ul>
