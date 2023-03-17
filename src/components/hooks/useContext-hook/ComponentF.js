@@ -4,14 +4,14 @@ import { UserContext, AllUserData } from '../../../App'
 function ComponentF() {
 	return (
 		<div>
-			<h2>Below data display via Context API via Comp F</h2>
-			<UserContext.Consumer>
+			<h2>Below data display with Context API via Comp F</h2>
+			<AllUserData.Consumer>
 				{
-					userName => {
+					userAllData => {
 						return (
-							<AllUserData.Consumer>
+							<UserContext.Consumer>
 								{
-									userAllData => {
+									userName => {
 										return(
 											<>
 												<h4>Data via normal string</h4>
@@ -29,11 +29,11 @@ function ComponentF() {
 										)
 									}
 								}
-							</AllUserData.Consumer>
+							</UserContext.Consumer>
 						)
 					}
 				}
-			</UserContext.Consumer>
+			</AllUserData.Consumer>
 		</div>
 	)
 }

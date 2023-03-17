@@ -30,7 +30,7 @@ import ComponentC from "./components/hooks/useContext-hook/ComponentC";
 
 const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hook", "UseEffect Hook", "Context API and Hook"];
 
-//Create context api we can use under calss or functional component both 
+//Create context api we can use under class or functional component both 
 export const UserContext = React.createContext();//with the help of export we cn use this in any comp
 export const AllUserData = React.createContext();
 
@@ -39,6 +39,7 @@ const App = () => {
 
   const [selectedSection, setSelectedSection] = useState("Movies");
   const [userData, setUserData] = useState([])//1
+  const [currentStateName, setCurrentStateName] = useState('Geet Thawani');
 
   const updateNavItem = (value) => {
     setSelectedSection(value);
@@ -48,6 +49,13 @@ const App = () => {
     console.log("Order by", order);
     //return; //data
   };
+
+ const updateStateName = () => {
+    setTimeout(() => {
+      // setCurrentStateName({name:'Priyanka, EKta, Raghu...'});
+      setCurrentStateName('Priyanka, EKta, Raghu...');
+    }, 1000);
+  }
 
 	useEffect(() => {//1
 		axios
@@ -60,6 +68,7 @@ const App = () => {
 				console.log(err)
 			})
 	},[])
+
 
   return (
     <div className="App">
@@ -87,9 +96,10 @@ const App = () => {
           {selectedSection === "UseEffect Hook" && <IntervalHookCounter />}
           {selectedSection === "UseEffect Hook" && <DataFetching />}
           {selectedSection === "UseEffect Hook" && <DataFetchingID />}
-          <UserContext.Provider value = {'Geet Thawani'} >
+          {/* <UserContext.Provider value = {{currentStateName, updateStateName}} > you can write like this too */}
+          <UserContext.Provider value = {{curentState:currentStateName, updateState:updateStateName}} >
             {/* {selectedSection === "Context API and Hook" && <ComponentC />} */}
-            <AllUserData.Provider value = {userData}>
+            <AllUserData.Provider value = {userData} >
               {selectedSection === "Context API and Hook" && <ComponentC />}
             </AllUserData.Provider>
           </UserContext.Provider>
