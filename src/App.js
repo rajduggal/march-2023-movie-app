@@ -25,21 +25,39 @@ import IntervalHookCounter from "./components/hooks/useEffect-hook/IntervalHookC
 import DataFetching from "./components/hooks/useEffect-hook/DataFetching";
 import DataFetchingID from "./components/hooks/useEffect-hook/DataFetchingID";
 import ComponentC from "./components/hooks/useContext-hook/ComponentC";
+import CounterOne from "./components/hooks/useReducer-hook/CounterOne";
+import CounterTwo from "./components/hooks/useReducer-hook/CounterTwo";
+import CounterThree from "./components/hooks/useReducer-hook/CounterThree";
+import UseReducerWithObject from "./components/hooks/useReducer-hook/UseReducerWithObject";
+import DataFetchingOne from "./components/hooks/useReducer-hook/DataFetchingOne";
+import DataFetchingTwo from "./components/hooks/useReducer-hook/DataFetchingTwo";
+import CallbackParent from "./components/hooks/useCallback-hook/CallbackParent";
+
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
 
-const NavItems = ["Movies", "Wishlist", "Genres", "New Movie", "UseState Hook", "UseEffect Hook", "Context API and Hook"];
+const NavItems = [
+  "Movies",
+  "Wishlist",
+  "Genres",
+  "New Movie",
+  "UseState Hook",
+  "UseEffect Hook",
+  "Context API and Hook",
+  "UseReducer Hook",
+  "UseCallback Hook",
+];
 
-//Create context api we can use under class or functional component both 
-export const UserContext = React.createContext();//with the help of export we cn use this in any comp
+//Create context api we can use under class or functional component both
+export const UserContext = React.createContext(); //with the help of export we cn use this in any comp
 export const AllUserData = React.createContext();
 
 const App = () => {
   const title = "React on Movies!";
 
   const [selectedSection, setSelectedSection] = useState("Movies");
-  const [userData, setUserData] = useState([])//1
-  const [currentStateName, setCurrentStateName] = useState('Geet Thawani');
+  const [userData, setUserData] = useState([]); //1
+  const [currentStateName, setCurrentStateName] = useState("Geet Thawani");
 
   const updateNavItem = (value) => {
     setSelectedSection(value);
@@ -50,25 +68,25 @@ const App = () => {
     //return; //data
   };
 
- const updateStateName = () => {
+  const updateStateName = () => {
     setTimeout(() => {
       // setCurrentStateName({name:'Priyanka, EKta, Raghu...'});
-      setCurrentStateName('Priyanka, EKta, Raghu...');
+      setCurrentStateName("Priyanka, EKta, Raghu...");
     }, 1000);
-  }
+  };
 
-	useEffect(() => {//1
-		axios
-			.get('https://jsonplaceholder.typicode.com/posts') //get request return promise.
-			.then(res => {
-        console.log(res)
+  useEffect(() => {
+    //1
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts") //get request return promise.
+      .then((res) => {
+        console.log(res);
         setUserData(res.data);
-			})
-			.catch(err => {
-				console.log(err)
-			})
-	},[])
-
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="App">
@@ -76,7 +94,7 @@ const App = () => {
       <div className="main-content">
         <SideNav items={NavItems} update={updateNavItem} />
         <div>
-          <Sort updateOrder={sortItems} />
+          {/* <Sort updateOrder={sortItems} /> */}
           {selectedSection === "Movies" && <MoviesList />}
           {selectedSection === "Wishlist" && <Wishlist />}
           {selectedSection === "UseState Hook" && <ClassCounter />}
@@ -97,12 +115,19 @@ const App = () => {
           {selectedSection === "UseEffect Hook" && <DataFetching />}
           {selectedSection === "UseEffect Hook" && <DataFetchingID />}
           {/* <UserContext.Provider value = {{currentStateName, updateStateName}} > you can write like this too */}
-          <UserContext.Provider value = {{curentState:currentStateName, updateState:updateStateName}} >
+          <UserContext.Provider
+            value={{
+              curentState: currentStateName,
+              updateState: updateStateName,
+            }}
+          >
             {/* {selectedSection === "Context API and Hook" && <ComponentC />} */}
-            <AllUserData.Provider value = {userData} >
+            <AllUserData.Provider value={userData}>
               {selectedSection === "Context API and Hook" && <ComponentC />}
             </AllUserData.Provider>
           </UserContext.Provider>
+          {selectedSection === "UseReducer Hook" && <DataFetchingTwo />}
+          {selectedSection === "UseCallback Hook" && <CallbackParent />}
         </div>
       </div>
     </div>

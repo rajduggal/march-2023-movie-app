@@ -5,19 +5,19 @@ const Header = ({ title, currentPage }) => {
   const [title1, setTitle] = useState("");
 
   useEffect(() => {
-    console.log("Mounted first time");
+    // console.log("Mounted first time");
   }, []);
 
   useEffect(() => {
-    console.log("Update state");
+    // console.log("Update state");
   });
 
   useEffect(() => {
-    console.log("Update ONLY time");
+    // console.log("Update ONLY time");
   }, [time]); // Dependencies, updates only when these are updated
 
   useEffect(() => {
-    console.log("Update ONLY title");
+    // console.log("Update ONLY title");
   }, [title1]);
   const getDateandTime = () => {
     return <div>{time.toString()}</div>;
