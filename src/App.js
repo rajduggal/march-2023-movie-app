@@ -32,6 +32,10 @@ import UseReducerWithObject from "./components/hooks/useReducer-hook/UseReducerW
 import DataFetchingOne from "./components/hooks/useReducer-hook/DataFetchingOne";
 import DataFetchingTwo from "./components/hooks/useReducer-hook/DataFetchingTwo";
 import CallbackParent from "./components/hooks/useCallback-hook/CallbackParent";
+import Counter from "./components/hooks/useMemo-hook/Counter";
+import ClassTimer from "./components/hooks/useRef-hook/ClassTimer";
+import FocusInput from "./components/hooks/useRef-hook/FocusInput";
+import HookTimer from "./components/hooks/useRef-hook/HookTimer";
 
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
@@ -46,6 +50,8 @@ const NavItems = [
   "Context API and Hook",
   "UseReducer Hook",
   "UseCallback Hook",
+  "UseMemo Hook",
+  "UseRef Hook",
 ];
 
 //Create context api we can use under class or functional component both
@@ -128,6 +134,10 @@ const App = () => {
           </UserContext.Provider>
           {selectedSection === "UseReducer Hook" && <DataFetchingTwo />}
           {selectedSection === "UseCallback Hook" && <CallbackParent />}
+          {selectedSection === "UseMemo Hook" && <Counter />}
+          {selectedSection === "UseRef Hook" && <FocusInput />}
+          {selectedSection === "UseRef Hook" && <ClassTimer />}
+          {selectedSection === "UseRef Hook" && <HookTimer />}
         </div>
       </div>
     </div>
