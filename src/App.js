@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.scss";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Header from "./components/Header";
-import SideNav from "./components/Sidenav";
+import SideNav from "./components/SideNav";
 import MoviesList from "./components/Movies";
 import Sort from "./components/Sort";
 import Wishlist from "./components/Wishlist";
@@ -36,6 +36,9 @@ import Counter from "./components/hooks/useMemo-hook/Counter";
 import ClassTimer from "./components/hooks/useRef-hook/ClassTimer";
 import FocusInput from "./components/hooks/useRef-hook/FocusInput";
 import HookTimer from "./components/hooks/useRef-hook/HookTimer";
+import routerLinks from './routes';
+import { RouterProvider } from "react-router-dom";
+
 
 // Inline styling - add styling to the element itself
 // External styles - importing some classes from a file, and targetting the elements by class
@@ -64,7 +67,7 @@ const App = () => {
   const [selectedSection, setSelectedSection] = useState("Movies");
   const [userData, setUserData] = useState([]); //1
   const [currentStateName, setCurrentStateName] = useState("Geet Thawani");
-
+  const router = routerLinks;
   const updateNavItem = (value) => {
     setSelectedSection(value);
   };
@@ -98,47 +101,7 @@ const App = () => {
     <div className="App">
       <Header title={title} currentPage={selectedSection} />
       <div className="main-content">
-        <SideNav items={NavItems} update={updateNavItem} />
-        <div>
-          {/* <Sort updateOrder={sortItems} /> */}
-          {selectedSection === "Movies" && <MoviesList />}
-          {selectedSection === "Wishlist" && <Wishlist />}
-          {selectedSection === "UseState Hook" && <ClassCounter />}
-          {selectedSection === "UseState Hook" && <HookCounter />}
-          {selectedSection === "UseState Hook" && <HooksRef />}
-          {selectedSection === "UseState Hook" && <ClassCounterTwo />}
-          {selectedSection === "UseState Hook" && <HookCounterTwo />}
-          {selectedSection === "UseState Hook" && <HookCounterThree />}
-          {selectedSection === "UseState Hook" && <HookCounterFour />}
-          {selectedSection === "UseEffect Hook" && <ClassCounterOne />}
-          {selectedSection === "UseEffect Hook" && <HookCounterOne />}
-          {/* {selectedSection === "UseEffect Hook" && <ClassMouse />} */}
-          {/* {selectedSection === "UseEffect Hook" && <HookMouse />}  */}
-          {/* // need to show unmount so include this under MouseContainer comp */}
-          {selectedSection === "UseEffect Hook" && <MouseContainer />}
-          {selectedSection === "UseEffect Hook" && <IntervalClassCounter />}
-          {selectedSection === "UseEffect Hook" && <IntervalHookCounter />}
-          {selectedSection === "UseEffect Hook" && <DataFetching />}
-          {selectedSection === "UseEffect Hook" && <DataFetchingID />}
-          {/* <UserContext.Provider value = {{currentStateName, updateStateName}} > you can write like this too */}
-          <UserContext.Provider
-            value={{
-              curentState: currentStateName,
-              updateState: updateStateName,
-            }}
-          >
-            {/* {selectedSection === "Context API and Hook" && <ComponentC />} */}
-            <AllUserData.Provider value={userData}>
-              {selectedSection === "Context API and Hook" && <ComponentC />}
-            </AllUserData.Provider>
-          </UserContext.Provider>
-          {selectedSection === "UseReducer Hook" && <DataFetchingTwo />}
-          {selectedSection === "UseCallback Hook" && <CallbackParent />}
-          {selectedSection === "UseMemo Hook" && <Counter />}
-          {selectedSection === "UseRef Hook" && <FocusInput />}
-          {selectedSection === "UseRef Hook" && <ClassTimer />}
-          {selectedSection === "UseRef Hook" && <HookTimer />}
-        </div>
+        <RouterProvider router = {router} />
       </div>
     </div>
   );
