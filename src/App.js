@@ -3,7 +3,6 @@ import "./App.scss";
 import axios from "axios";
 import React, { useState, useEffect, useMemo } from "react";
 import Header from "./components/Header";
-import SideNav from "./components/SideNav";
 import MoviesList from "./components/Movies";
 import Sort from "./components/Sort";
 import Wishlist from "./components/Wishlist";

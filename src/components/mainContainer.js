@@ -1,4 +1,4 @@
-import SideNav from "./SideNav";
+import SideNav from "../components/Sidenav";
 import {Outlet, useNavigation} from 'react-router-dom';
 
 const MainContainer = () => {
